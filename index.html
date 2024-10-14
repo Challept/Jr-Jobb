@@ -9,38 +9,19 @@
 <body>
     <header>
         <h1>Välkommen till JrJobb</h1>
-        <p>Logga in eller registrera dig för att komma igång.</p>
+        <p>Välj ett alternativ för att komma igång.</p>
     </header>
 
-    <section class="auth-section">
-        <div class="auth-container">
-            <h2>Logga in</h2>
-            <form action="login.html" method="POST">
-                <label for="email">E-post:</label>
-                <input type="email" id="email" name="email" required>
+    <section class="button-section">
+        <button onclick="location.href='login.html'">Logga in</button>
+        <button onclick="location.href='register.html'">Registrera dig</button>
+    </section>
 
-                <label for="password">Lösenord:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Logga in</button>
-            </form>
-        </div>
-
-        <div class="auth-container">
-            <h2>Registrera dig</h2>
-            <form action="register.html" method="POST">
-                <label for="name">Namn:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">E-post:</label>
-                <input type="email" id="reg-email" name="email" required>
-
-                <label for="password">Lösenord:</label>
-                <input type="password" id="reg-password" name="password" required>
-
-                <button type="submit">Registrera dig</button>
-            </form>
-        </div>
+    <section class="about-section">
+        <h2>Om oss</h2>
+        <p>
+            JrJobb är en plattform där vuxna kan lägga upp enkla jobb, och tonåringar kan utföra dem för en ersättning. Vårt mål är att skapa fler möjligheter för ungdomar att tjäna egna pengar på ett säkert sätt.
+        </p>
     </section>
 
     <footer>
