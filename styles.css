@@ -9,20 +9,26 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background: linear-gradient(to bottom, #007bff, #28a745, #6c757d); /* Blå, grön, grå gradient */
     color: #333;
+}
+
+.container {
+    flex-grow: 1; /* Gör att containern fyller all tillgänglig plats, vilket skjuter footern till botten */
 }
 
 header h1 {
     font-size: 2em;
     margin: 20px 0 10px;
     text-align: center;
+    color: white; /* Ändrar textfärgen till vit för bättre synlighet */
 }
 
 header p {
     font-size: 1.2em;
     margin-bottom: 30px;
     text-align: center;
+    color: white;
 }
 
 .button-section {
@@ -47,14 +53,13 @@ header p {
 
 .image-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .image-row {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
 }
 
 .image-row img {
@@ -93,5 +98,6 @@ footer {
     font-size: 0.9em;
     text-align: center;
     width: 100%;
-    margin-top: 40px;
+    position: relative;
+    bottom: 0;
 }
