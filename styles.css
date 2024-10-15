@@ -9,19 +9,19 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(to bottom, #007bff, #28a745, #6c757d); /* Blå, grön, grå gradient */
+    background: linear-gradient(to bottom, #007bff, #28a745, #6c757d);
     color: #333;
 }
 
 .container {
-    flex-grow: 1; /* Gör att containern fyller all tillgänglig plats, vilket skjuter footern till botten */
+    flex-grow: 1;
 }
 
 header h1 {
     font-size: 2em;
     margin: 20px 0 10px;
     text-align: center;
-    color: white; /* Ändrar textfärgen till vit för bättre synlighet */
+    color: white;
 }
 
 header p {
@@ -63,8 +63,8 @@ header p {
 }
 
 .image-row img {
-    width: 400px;
-    height: 300px;
+    width: 100px; /* Minskar bilderna till 100px */
+    height: 100px;
     margin: 10px;
     border-radius: 10px;
 }
@@ -100,4 +100,29 @@ footer {
     width: 100%;
     position: relative;
     bottom: 0;
+}
+
+/* Responsiva inställningar */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .button-section button {
+        width: 80%;
+        font-size: 1em;
+    }
+
+    .image-row img {
+        width: 80px; /* Mindre bilder på mobila enheter */
+        height: 80px;
+    }
+
+    .about-section h2 {
+        font-size: 1.5em;
+    }
 }
