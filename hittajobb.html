@@ -18,7 +18,6 @@
 
     <script>
         function blurAddressNumber(address) {
-            // Lägg till blur för alla nummer i adressen
             return address.replace(/\d+/g, '<span class="blur-text">$&</span>');
         }
 
@@ -37,7 +36,7 @@
                 jobElement.className = 'job-card';
                 jobElement.innerHTML = `
                     <h3>${job.task}</h3>
-                    <p><strong>Telefon:</strong> ${job.phone}</p>
+                    <p><strong>Telefon:</strong> <span class="phone-number">${job.phone}</span></p>
                     <p><strong>Adress:</strong> ${blurredAddress}</p>
                     <p><strong>Pris:</strong> ${job.price} kr</p>
                 `;
@@ -45,7 +44,6 @@
             });
         }
 
-        // Ladda jobben när sidan öppnas
         window.onload = loadJobs;
     </script>
 </body>
