@@ -27,12 +27,13 @@
             }
 
             jobs.forEach((job) => {
+                const blurredAddress = job.address.substring(0, job.address.length - 4) + "****";
                 const jobElement = document.createElement('div');
                 jobElement.className = 'job-card';
                 jobElement.innerHTML = `
                     <h3>${job.task}</h3>
                     <p><strong>Telefon:</strong> ${job.phone}</p>
-                    <p><strong>Adress:</strong> ${job.address}</p>
+                    <p><strong>Adress:</strong> <span class="blur-text">${blurredAddress}</span></p>
                     <p><strong>Pris:</strong> ${job.price} kr</p>
                 `;
                 jobList.appendChild(jobElement);
