@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
@@ -15,13 +15,19 @@ body {
 
 .container {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 header h1 {
-    font-size: 2em;
+    font-size: 2.4em;
     margin: 20px 0 10px;
     text-align: center;
     color: white;
+    letter-spacing: 1px;
 }
 
 header p {
@@ -37,20 +43,21 @@ header p {
 }
 
 .button-section button {
-    padding: 15px 30px;
+    padding: 12px 25px;
     margin: 10px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 1.2em;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button-section button:hover {
     background-color: #0056b3;
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .social-signin {
@@ -61,18 +68,19 @@ header p {
 }
 
 .social-signin button {
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 8px 15px;
+    margin: 8px 0;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
-    width: 80%;
-    font-size: 1em;
+    width: auto;
+    min-width: 180px; /* Mindre bredd */
+    font-size: 0.9em;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .social-signin button#google-signin {
@@ -84,8 +92,9 @@ header p {
 }
 
 .social-signin button:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0.95;
 }
 
 .image-section {
@@ -119,7 +128,7 @@ header p {
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 15px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -135,12 +144,13 @@ header p {
 .about-section p {
     font-size: 1em;
     color: #555;
+    line-height: 1.5;
 }
 
 footer {
     background-color: #333;
     color: white;
-    padding: 10px 0;
+    padding: 15px 0;
     font-size: 0.9em;
     text-align: center;
     width: 100%;
@@ -151,7 +161,7 @@ footer {
 /* Responsiva inställningar */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 1.5em;
+        font-size: 1.8em;
     }
 
     header p {
@@ -159,12 +169,15 @@ footer {
     }
 
     .button-section button {
-        width: 80%;
+        width: 85%;
         font-size: 1em;
+        padding: 12px;
     }
 
     .social-signin button {
-        width: 90%; /* Make buttons more responsive on mobile */
+        width: 85%; /* Mer responsiv på mobila enheter */
+        min-width: 160px;
+        font-size: 0.85em;
     }
 
     .image-row img {
