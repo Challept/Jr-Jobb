@@ -17,6 +17,20 @@
     </div>
 
     <script>
+        function blurAddressNumber(address) {
+            // Split address by spaces to identify the number part
+            const parts = address.split(" ");
+            const blurredParts = parts.map((part, index) => {
+                // Check if part contains digits (assuming it is the house number)
+                if (index === 0 && /\d/.test(part)) {
+                    return `<span class="blur-text">${part}</span>`;
+                }
+                return part;
+            });
+
+            return blurredParts.join(" ");
+        }
+
         function loadJobs() {
             const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
             const jobList = document.getElementById('job-list');
@@ -27,13 +41,13 @@
             }
 
             jobs.forEach((job) => {
-                const blurredAddress = job.address.substring(0, job.address.length - 4) + "****";
+                const blurredAddress = blurAddressNumber(job.address);
                 const jobElement = document.createElement('div');
                 jobElement.className = 'job-card';
                 jobElement.innerHTML = `
                     <h3>${job.task}</h3>
                     <p><strong>Telefon:</strong> ${job.phone}</p>
-                    <p><strong>Adress:</strong> <span class="blur-text">${blurredAddress}</span></p>
+                    <p><strong>Adress:</strong> ${blurredAddress}</p>
                     <p><strong>Pris:</strong> ${job.price} kr</p>
                 `;
                 jobList.appendChild(jobElement);
