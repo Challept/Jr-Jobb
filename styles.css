@@ -44,7 +44,7 @@ header p {
     justify-content: center;
     gap: 20px;
     margin-bottom: 40px;
-    flex-wrap: wrap; /* För att hantera små skärmar */
+    flex-wrap: wrap;
 }
 
 .button-section button {
@@ -56,6 +56,7 @@ header p {
     cursor: pointer;
     font-size: 1.1em;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .button-section button:hover {
@@ -73,26 +74,35 @@ header p {
     max-width: 700px;
     text-align: left;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 .step {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .step-number {
-    font-size: 2em;
+    font-size: 2.5em;
     color: #007bff;
     font-weight: bold;
     margin-right: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: #e0f7ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .payment-info {
     font-size: 1em;
-    color: #007bff; /* Blå färg */
+    color: #007bff;
     text-align: center;
+    font-weight: bold;
 }
 
 /* Om oss-sektionen */
@@ -101,11 +111,35 @@ header p {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 30px auto;
+    margin: 40px auto;
     max-width: 900px;
     text-align: center;
     color: #333;
     line-height: 1.6;
+}
+
+/* Jobbkort */
+.job-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.job-card h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.job-card p {
+    margin: 5px 0;
 }
 
 /* Footer */
@@ -150,7 +184,9 @@ footer {
     }
 
     .step-number {
-        font-size: 1.8em;
+        font-size: 2em;
+        width: 40px;
+        height: 40px;
     }
 
     .about-section {
