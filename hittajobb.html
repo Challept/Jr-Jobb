@@ -18,17 +18,8 @@
 
     <script>
         function blurAddressNumber(address) {
-            // Split address by spaces to identify the number part
-            const parts = address.split(" ");
-            const blurredParts = parts.map((part, index) => {
-                // Check if part contains digits (assuming it is the house number)
-                if (index === 0 && /\d/.test(part)) {
-                    return `<span class="blur-text">${part}</span>`;
-                }
-                return part;
-            });
-
-            return blurredParts.join(" ");
+            // Lägg till blur för alla nummer i adressen
+            return address.replace(/\d+/g, '<span class="blur-text">$&</span>');
         }
 
         function loadJobs() {
