@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logga in - JrJobb</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Logga in</h2>
+        <form id="login-form">
+            <label for="login-email">E-post:</label>
+            <input type="email" id="login-email" required>
+
+            <label for="login-password">Lösenord:</label>
+            <input type="password" id="login-password" required>
+
+            <button type="submit">Logga in</button>
+        </form>
+        <div class="social-signin">
+            <button id="google-signin">Logga in med Google</button>
+            <button id="apple-signin">Logga in med Apple</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+    <script>
+        // Firebase Konfiguration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBuc6rlm9n68VOonCyxMD2RiCUL4ye6T9w",
+            authDomain: "jrjobbeu.firebaseapp.com",
+            databaseURL: "https://jrjobbeu-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "jrjobbeu",
+            storageBucket: "jrjobbeu.appspot.com",
+            messagingSenderId: "1086020139028",
+            appId: "1:1086020139028:web:3d8f4dd0a5d7a330b64f01",
+            measurementId: "G-4FWXYTXFGF"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+
+        // Inloggning med e-post och lösenord
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert('Inloggning lyckades!');
+                    window.location.href = "index.html"; // Omdirigera till hemsidan efter lyckad inloggning
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        });
+
+        // Google Inloggning
+        document.getElementById('google-signin').addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    alert('Inloggning med Google lyckades!');
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        });
+
+        // Apple Inloggning
+        document.getElementById('apple-signin').addEventListener('click', () => {
+            const provider = new firebase.auth.OAuthProvider('apple.com');
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    alert('Inloggning med Apple lyckades!');
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    alert(error.message);
+                });
+        });
+    </script>
+</body>
+</html>
