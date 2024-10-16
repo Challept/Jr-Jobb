@@ -1,8 +1,24 @@
-* { 
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Förhindra markering av text */
+body, h1, h2, h3, p, button, form, .job-card, .about-section, .how-it-works {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Tillåt markering av telefonnummer */
+.phone-number {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
 }
 
 body {
@@ -14,7 +30,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    overflow-x: hidden; /* Förhindrar horisontell skrollning */
+    overflow-x: hidden;
 }
 
 /* Container för huvudinnehåll */
@@ -23,7 +39,7 @@ body {
     max-width: 900px;
     padding: 20px;
     flex: 1;
-    animation: fadeIn 1s ease; /* Lätt fade-in animation */
+    animation: fadeIn 1s ease;
 }
 
 /* Header och huvudtext */
@@ -32,7 +48,7 @@ header h1 {
     margin-top: 20px;
     text-align: center;
     color: #ffffff;
-    animation: slideIn 1s ease; /* Header slides in från toppen */
+    animation: slideIn 1s ease;
 }
 
 header p {
@@ -62,7 +78,7 @@ header p {
     font-size: 1.3em;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    animation: bounceIn 1s ease; /* Bouncy animation */
+    animation: bounceIn 1s ease;
 }
 
 .button-section button:hover, .dashboard-buttons button:hover {
@@ -165,7 +181,7 @@ footer {
     width: 100%;
     position: relative;
     bottom: 0;
-    animation: slideUp 1s ease; /* Lätt animation upp */
+    animation: slideUp 1s ease;
 }
 
 /* Responsiva inställningar */
