@@ -2,89 +2,91 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
     background: linear-gradient(to bottom, #007bff, #28a745, #6c757d);
     color: #333;
 }
 
-.container {
-    flex-grow: 1;
+.auth-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
 }
 
-header h1 {
-    font-size: 2.4em;
-    margin: 20px 0 10px;
-    text-align: center;
-    color: white;
-    letter-spacing: 1px;
+label {
+    font-weight: bold;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 0.9em;
 }
 
-header p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    text-align: center;
-    color: white;
+input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
 }
 
-.button-section {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.button-section button {
-    padding: 12px 25px;
-    margin: 10px;
+button {
+    padding: 12px;
+    margin-top: 20px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.button-section button:hover {
+button:hover {
     background-color: #0056b3;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 .social-signin {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
 }
 
 .social-signin button {
-    padding: 8px 15px;
-    margin: 8px 0;
+    background-color: #4285F4; /* Default to Google Blue */
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     cursor: pointer;
-    width: auto;
-    min-width: 180px; /* Mindre bredd */
     font-size: 0.9em;
+    width: 200px;
+    padding: 8px 0;
+    margin: 8px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.social-signin button#google-signin {
-    background-color: #4285F4; /* Google Blue */
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .social-signin button#apple-signin {
@@ -92,109 +94,6 @@ header p {
 }
 
 .social-signin button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
     opacity: 0.95;
-}
-
-.image-section {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.image-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.image-row img {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.image-row img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.about-section {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.about-section h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.about-section p {
-    font-size: 1em;
-    color: #555;
-    line-height: 1.5;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    padding: 15px 0;
-    font-size: 0.9em;
-    text-align: center;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-}
-
-/* Responsiva inställningar */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8em;
-    }
-
-    header p {
-        font-size: 1em;
-    }
-
-    .button-section button {
-        width: 85%;
-        font-size: 1em;
-        padding: 12px;
-    }
-
-    .social-signin button {
-        width: 85%; /* Mer responsiv på mobila enheter */
-        min-width: 160px;
-        font-size: 0.85em;
-    }
-
-    .image-row img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .about-section h2 {
-        font-size: 1.5em;
-    }
-
-    .about-section p {
-        font-size: 0.9em;
-    }
-
-    .image-section, .image-row {
-        flex-direction: column;
-        align-items: center;
-    }
 }
