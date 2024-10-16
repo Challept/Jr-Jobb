@@ -26,9 +26,9 @@
                 return;
             }
 
-            jobs.forEach((job, index) => {
+            jobs.forEach((job) => {
                 const jobElement = document.createElement('div');
-                jobElement.className = 'job';
+                jobElement.className = 'job-card';
                 jobElement.innerHTML = `
                     <h3>${job.task}</h3>
                     <p><strong>Telefon:</strong> ${job.phone}</p>
