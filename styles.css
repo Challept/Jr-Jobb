@@ -11,8 +11,9 @@ body {
     min-height: 100vh;
     background: linear-gradient(to bottom, #007bff, #28a745, #6c757d);
     color: #333;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 /* Container för huvudinnehåll */
@@ -20,7 +21,7 @@ body {
     width: 100%;
     max-width: 900px;
     padding: 20px;
-    flex: 1;
+    text-align: center;
 }
 
 /* Header och huvudtext */
@@ -38,59 +39,17 @@ header p {
     color: #ffffff;
 }
 
-/* Knappar på dashboard */
-.dashboard-buttons {
+/* Knappar på indexsidan */
+.button-section {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 30px;
-    flex-wrap: wrap;
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* För att hantera små skärmar */
 }
 
-.dashboard-buttons button {
-    padding: 15px 30px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-buttons button:hover {
-    background-color: #218838;
-    transform: scale(1.05);
-}
-
-/* Formulär i Lägg till jobb */
-form {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-form label {
-    font-weight: bold;
-    color: #333;
-}
-
-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-form button {
-    padding: 12px;
+.button-section button {
+    padding: 15px 25px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -101,45 +60,63 @@ form button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-form button:hover {
+.button-section button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
 
-/* Jobbkort */
-.job-card {
+/* Hur det fungerar-sektionen */
+.how-it-works {
     background-color: #ffffff;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
+    margin: 30px auto;
+    max-width: 700px;
+    text-align: left;
+    color: #333;
+    line-height: 1.8;
+}
+
+.step {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.job-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.job-card h3 {
+.step-number {
+    font-size: 2.5em;
     color: #007bff;
-    margin-bottom: 10px;
+    font-weight: bold;
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: #e0f7ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.job-card p {
-    margin: 5px 0;
+.payment-info {
+    font-size: 1em;
+    color: #007bff;
+    text-align: center;
+    font-weight: bold;
 }
 
-/* Blur-effekt för adresser */
-.blur-text {
-    color: #555;
-    font-style: italic;
-    filter: blur(4px);
-    transition: filter 0.3s ease;
-}
-
-.job-card:hover .blur-text {
-    filter: blur(2px);
+/* Om oss-sektionen */
+.about-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 900px;
+    text-align: center;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* Footer */
@@ -156,14 +133,8 @@ footer {
 
 /* Responsiva inställningar */
 @media (max-width: 768px) {
-    .dashboard-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .dashboard-buttons button {
-        width: 80%;
-        font-size: 1.1em;
+    body {
+        padding: 10px;
     }
 
     header h1 {
@@ -174,15 +145,37 @@ footer {
         font-size: 1em;
     }
 
-    form button {
-        width: 100%;
+    .button-section {
+        flex-direction: column;
+        gap: 15px;
     }
 
-    .job-card {
+    .button-section button {
+        width: 80%;
+        font-size: 1em;
+    }
+
+    .how-it-works {
+        width: 90%;
         padding: 20px;
     }
 
-    .job-card h3 {
-        font-size: 1.4em;
+    .step-number {
+        font-size: 2em;
+        width: 40px;
+        height: 40px;
+    }
+
+    .about-section {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .about-section h2 {
+        font-size: 1.6em;
+    }
+
+    .about-section p {
+        font-size: 0.9em;
     }
 }
