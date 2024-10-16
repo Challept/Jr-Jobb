@@ -12,6 +12,7 @@ body {
     min-height: 100vh;
     background: linear-gradient(to bottom, #007bff, #28a745, #6c757d);
     color: #333;
+    padding: 20px; /* För att ge lite luft på mobila enheter */
 }
 
 .auth-container {
@@ -20,6 +21,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     width: 350px;
+    max-width: 100%; /* Anpassar sig till skärmens bredd */
     text-align: center;
 }
 
@@ -47,6 +49,8 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 button {
@@ -74,13 +78,13 @@ button:hover {
 }
 
 .social-signin button {
-    background-color: #4285F4; /* Default to Google Blue */
+    background-color: #4285F4; /* Standardfärg för Google */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
-    width: 200px;
+    width: 220px; /* Smalare knapp för mobil */
     padding: 8px 0;
     margin: 8px 0;
     display: flex;
@@ -90,10 +94,39 @@ button:hover {
 }
 
 .social-signin button#apple-signin {
-    background-color: #000; /* Apple Black */
+    background-color: #000; /* Svart för Apple */
 }
 
 .social-signin button:hover {
     transform: scale(1.05);
     opacity: 0.95;
+}
+
+/* Responsiva inställningar */
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Mindre padding på mobila enheter */
+    }
+
+    .auth-container {
+        width: 100%; /* Använd hela skärmens bredd */
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.6em; /* Minska textstorlek på mobil */
+    }
+
+    button {
+        font-size: 0.9em; /* Mindre text på knappar för mobil */
+    }
+
+    .social-signin button {
+        width: 80%; /* Anpassar knapparna för mobil */
+        font-size: 0.85em;
+    }
+
+    input {
+        font-size: 0.9em; /* Mindre text i inmatningsfält för mobil */
+    }
 }
