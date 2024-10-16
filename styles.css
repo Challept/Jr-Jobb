@@ -45,28 +45,73 @@ header p {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button-section button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.social-signin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.social-signin button {
+    padding: 10px 20px;
+    margin: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80%;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-signin button#google-signin {
+    background-color: #4285F4; /* Google Blue */
+}
+
+.social-signin button#apple-signin {
+    background-color: #000; /* Apple Black */
+}
+
+.social-signin button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
 .image-section {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-top: 20px;
 }
 
 .image-row {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .image-row img {
-    width: 100px; /* Minskar bilderna till 100px */
+    width: 100px;
     height: 100px;
     margin: 10px;
     border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-row img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .about-section {
@@ -84,6 +129,7 @@ header p {
 .about-section h2 {
     font-size: 1.8em;
     margin-bottom: 15px;
+    color: #333;
 }
 
 .about-section p {
@@ -117,12 +163,25 @@ footer {
         font-size: 1em;
     }
 
+    .social-signin button {
+        width: 90%; /* Make buttons more responsive on mobile */
+    }
+
     .image-row img {
-        width: 80px; /* Mindre bilder på mobila enheter */
+        width: 80px;
         height: 80px;
     }
 
     .about-section h2 {
         font-size: 1.5em;
+    }
+
+    .about-section p {
+        font-size: 0.9em;
+    }
+
+    .image-section, .image-row {
+        flex-direction: column;
+        align-items: center;
     }
 }
