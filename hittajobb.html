@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitta jobb - JrJobb</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Förhindrar kopiering av text */
-        body {
-            user-select: none; /* Gör att text inte kan markeras och kopieras */
-        }
-        .phone-number {
-            user-select: text; /* Gör att telefonnummer fortfarande kan markeras och kopieras */
-        }
-        .blur-text {
-            color: #555;
-            font-style: italic;
-            filter: blur(5px); /* Gör texten blurrig */
-            pointer-events: none; /* Förhindrar att användaren kan interagera med texten */
-        }
-    </style>
+    <!-- Lägg till Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBuc6rlm9n68VOonCyxMD2RiCUL4ye6T9w",
+            authDomain: "jrjobbeu.firebaseapp.com",
+            databaseURL: "https://jrjobbeu-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "jrjobbeu",
+            storageBucket: "jrjobbeu.appspot.com",
+            messagingSenderId: "1086020139028",
+            appId: "1:1086020139028:web:3d8f4dd0a5d7a330b64f01",
+            measurementId: "G-4FWXYTXFGF"
+        };
+
+        // Initiera Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -29,38 +33,40 @@
         <div id="job-list">
             <!-- Jobben kommer att visas här -->
         </div>
-    </div>
 
-    <script>
-        function blurAddressNumber(address) {
-            // Använd regex för att hitta alla nummer i adressen och blurr dem
-            return address.replace(/\d+/g, '<span class="blur-text">$&</span>');
-        }
-
-        function loadJobs() {
-            const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
-            const jobList = document.getElementById('job-list');
-
-            if (jobs.length === 0) {
-                jobList.innerHTML = "<p>Inga jobb tillgängliga just nu.</p>";
-                return;
+        <script>
+            function blurAddressNumber(address) {
+                return address.replace(/\d+/g, '<span class="blur-text">$&</span>');
             }
 
-            jobs.forEach((job) => {
-                const blurredAddress = blurAddressNumber(job.address);
-                const jobElement = document.createElement('div');
-                jobElement.className = 'job-card';
-                jobElement.innerHTML = `
-                    <h3>${job.task}</h3>
-                    <p><strong>Telefon:</strong> <span class="phone-number">${job.phone}</span></p>
-                    <p><strong>Adress:</strong> ${blurredAddress}</p>
-                    <p><strong>Pris:</strong> ${job.price} kr</p>
-                `;
-                jobList.appendChild(jobElement);
-            });
-        }
+            function loadJobs() {
+                const jobList = document.getElementById('job-list');
+                firebase.database().ref('jobs').on('value', (snapshot) => {
+                    jobList.innerHTML = ""; // Rensa listan innan vi lägger till jobb
 
-        window.onload = loadJobs;
-    </script>
+                    const jobs = snapshot.val();
+                    if (!jobs) {
+                        jobList.innerHTML = "<p>Inga jobb tillgängliga just nu.</p>";
+                        return;
+                    }
+
+                    Object.values(jobs).forEach((job) => {
+                        const blurredAddress = blurAddressNumber(job.address);
+                        const jobElement = document.createElement('div');
+                        jobElement.className = 'job-card';
+                        jobElement.innerHTML = `
+                            <h3>${job.task}</h3>
+                            <p><strong>Telefon:</strong> <span class="phone-number">${job.phone}</span></p>
+                            <p><strong>Adress:</strong> ${blurredAddress}</p>
+                            <p><strong>Pris:</strong> ${job.price} kr</p>
+                        `;
+                        jobList.appendChild(jobElement);
+                    });
+                });
+            }
+
+            window.onload = loadJobs;
+        </script>
+    </div>
 </body>
 </html>
