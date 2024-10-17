@@ -13,6 +13,12 @@
         .phone-number {
             user-select: text; /* Gör att telefonnummer fortfarande kan markeras och kopieras */
         }
+        .blur-text {
+            color: #555;
+            font-style: italic;
+            filter: blur(5px); /* Gör texten blurrig */
+            pointer-events: none; /* Förhindrar att användaren kan interagera med texten */
+        }
     </style>
 </head>
 <body>
@@ -27,7 +33,8 @@
 
     <script>
         function blurAddressNumber(address) {
-            return address.replace(/\d+/g, '<span class="blur-text">$&</span>'); // Blur för nummer i adress
+            // Använd regex för att hitta alla nummer i adressen och blurr dem
+            return address.replace(/\d+/g, '<span class="blur-text">$&</span>');
         }
 
         function loadJobs() {
