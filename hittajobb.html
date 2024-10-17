@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitta jobb - JrJobb</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Förhindrar kopiering av text */
+        body {
+            user-select: none; /* Gör att text inte kan markeras och kopieras */
+        }
+        .phone-number {
+            user-select: text; /* Gör att telefonnummer fortfarande kan markeras och kopieras */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -18,7 +27,7 @@
 
     <script>
         function blurAddressNumber(address) {
-            return address.replace(/\d+/g, '<span class="blur-text">$&</span>');
+            return address.replace(/\d+/g, '<span class="blur-text">$&</span>'); // Blur för nummer i adress
         }
 
         function loadJobs() {
