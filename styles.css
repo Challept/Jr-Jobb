@@ -72,7 +72,7 @@ header p {
 
 /* Hur fungerar det -sektionen */
 .how-it-works {
-    background-color: #f0f8ff; /* Ljus bakgrundsfärg */
+    background-color: #e0f7ff; /* Ljus bakgrundsfärg */
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
@@ -84,8 +84,8 @@ header p {
 }
 
 .how-it-works h2 {
-    font-size: 2.5em;
-    color: #007bff;
+    font-size: 2.8em;
+    color: #0056b3;
     text-align: center;
     font-weight: bold;
     margin-bottom: 20px;
@@ -99,9 +99,9 @@ header p {
 
 .step-number {
     font-size: 2em;
-    color: #007bff;
+    color: #0056b3;
     font-weight: bold;
-    background-color: #e0f0ff;
+    background-color: #cce5ff;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -121,7 +121,7 @@ header p {
     text-align: center;
     color: #333;
     line-height: 1.6;
-    margin-bottom: 20px; /* Lite extra utrymme innan footern */
+    margin-top: 40px; /* För att säkerställa att den är precis ovanför footern */
 }
 
 /* Footer */
@@ -132,8 +132,9 @@ footer {
     font-size: 1em;
     text-align: center;
     width: 100%;
-    position: relative;
+    position: absolute;
     bottom: 0;
+    left: 0;
     animation: slideUp 1s ease;
 }
 
@@ -158,7 +159,7 @@ footer {
     }
 
     .how-it-works h2 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     .step-number {
