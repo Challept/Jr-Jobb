@@ -48,25 +48,28 @@
         </form>
 
         <script>
-            const jobForm = document.getElementById('job-form');
+            // Vänta på att sidan ska laddas innan du tilldelar event-listeners
+            document.addEventListener('DOMContentLoaded', () => {
+                const jobForm = document.getElementById('job-form');
 
-            jobForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+                jobForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
 
-                const job = {
-                    task: document.getElementById('task').value,
-                    phone: document.getElementById('phone').value,
-                    address: document.getElementById('address').value,
-                    price: document.getElementById('price').value
-                };
+                    const job = {
+                        task: document.getElementById('task').value,
+                        phone: document.getElementById('phone').value,
+                        address: document.getElementById('address').value,
+                        price: document.getElementById('price').value
+                    };
 
-                // Spara jobbet i Firebase Realtime Database
-                firebase.database().ref('jobs').push(job).then(() => {
-                    alert('Jobbet har lagts till!');
-                    jobForm.reset();
-                }).catch((error) => {
-                    console.error('Error:', error);
-                    alert('Något gick fel, försök igen senare.');
+                    // Spara jobbet i Firebase Realtime Database
+                    database.ref('jobs').push(job).then(() => {
+                        alert('Jobbet har lagts till!');
+                        jobForm.reset();
+                    }).catch((error) => {
+                        console.error('Error:', error);
+                        alert('Något gick fel, försök igen senare.');
+                    });
                 });
             });
         </script>
