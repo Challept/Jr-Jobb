@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +8,19 @@
     <!-- Lägg till Firebase via CDN -->
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+    <style>
+        /* Förhindra textkopiering på alla element utom telefonnummer */
+        body, h1, h3, p, div, span {
+            user-select: none; /* Förhindra markering/kopiering */
+        }
+
+        /* Tillåt endast telefonnummer att kopieras */
+        .phone-number {
+            user-select: text; /* Tillåter markering/kopiering av text */
+        }
+    </style>
 </head>
-<body oncontextmenu="return false;" style="user-select: none;">
+<body oncontextmenu="return false;">
     <div class="container">
         <header>
             <h1>Tillgängliga jobb</h1>
@@ -20,6 +31,18 @@
     </div>
 
     <script>
+        // Förhindra kopiering även på mobiler
+        document.addEventListener('copy', (e) => {
+            const selection = window.getSelection();
+            const selectedText = selection.toString();
+            
+            // Om det som kopieras inte är från ett telefonnummer-element, blockera kopieringen
+            if (selection.anchorNode && !selection.anchorNode.parentElement.classList.contains('phone-number')) {
+                e.preventDefault();
+                alert("Textkopiering är inte tillåten.");
+            }
+        });
+
         // Firebase-konfiguration
         const firebaseConfig = {
             apiKey: "AIzaSyBuc6rlm9n68VOonCyxMD2RiCUL4ye6T9w",
