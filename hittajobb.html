@@ -32,6 +32,29 @@
             cursor: pointer;
             font-size: 16px;
         }
+
+        /* Container för jobb och annons */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Jobb-lista */
+        .job-list-container {
+            flex: 2; /* Ger jobb-listan mer utrymme */
+        }
+
+        /* Annons på höger sida */
+        .ad-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-left: 20px;
+        }
     </style>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5038872711071283"
@@ -44,22 +67,23 @@
         <header>
             <h1>Tillgängliga jobb</h1>
         </header>
-        <div id="job-list" class="job-grid">
-            <!-- AdSense-annonsen i produktkort-format -->
-            <div class="job-card">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5038872711071283" crossorigin="anonymous"></script>
+        
+        <!-- Huvudinnehåll: jobb-lista och annons -->
+        <div class="main-content">
+            <div id="job-list" class="job-grid job-list-container">
+                <!-- Jobben kommer att visas här -->
+            </div>
+            
+            <!-- Annons på höger sida -->
+            <div class="ad-container">
                 <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-format="fluid"
-                    data-ad-layout-key="-6t+ed+2i-1n-4w"
+                    style="display:inline-block;width:290px;height:600px"
                     data-ad-client="ca-pub-5038872711071283"
-                    data-ad-slot="1808797963"></ins>
+                    data-ad-slot="7554609938"></ins>
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
-
-            <!-- Jobben och annonserna kommer att visas här -->
         </div>
     </div>
 
