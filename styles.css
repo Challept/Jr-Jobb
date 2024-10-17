@@ -11,7 +11,7 @@ body {
     min-height: 100vh;
     background: linear-gradient(to bottom, #007bff, #28a745, #6c757d);
     color: #333;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
     overflow-x: hidden; /* Förhindrar horisontell skrollning */
@@ -132,9 +132,7 @@ footer {
     font-size: 1em;
     text-align: center;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    margin-top: auto; /* Håller footern längst ned på sidan */
     animation: slideUp 1s ease;
 }
 
