@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lägg till jobb - JrJobb</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Lägg till Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
+    <script>
+        // Din Firebase-konfiguration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBuc6rlm9n68VOonCyxMD2RiCUL4ye6T9w",
+            authDomain: "jrjobbeu.firebaseapp.com",
+            databaseURL: "https://jrjobbeu-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "jrjobbeu",
+            storageBucket: "jrjobbeu.appspot.com",
+            messagingSenderId: "1086020139028",
+            appId: "1:1086020139028:web:3d8f4dd0a5d7a330b64f01",
+            measurementId: "G-4FWXYTXFGF"
+        };
+
+        // Initiera Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -12,8 +32,8 @@
             <h1>Lägg till ett nytt jobb</h1>
         </header>
         <form id="job-form">
-            <label for="name">Namn:</label>
-            <input type="text" id="name" required>
+            <label for="task">Uppgift:</label>
+            <input type="text" id="task" required>
 
             <label for="phone">Telefonnummer:</label>
             <input type="tel" id="phone" required>
@@ -21,36 +41,35 @@
             <label for="address">Adress:</label>
             <input type="text" id="address" required>
 
-            <label for="task">Uppgift:</label>
-            <input type="text" id="task" required>
-
             <label for="price">Pris (kr):</label>
             <input type="number" id="price" required>
 
-            <button type="submit" onclick="location.href='hittajobb.html'">Lägg till jobb</button>
+            <button type="submit">Lägg till jobb</button>
         </form>
+
+        <script>
+            const jobForm = document.getElementById('job-form');
+
+            jobForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const job = {
+                    task: document.getElementById('task').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value,
+                    price: document.getElementById('price').value
+                };
+
+                // Spara jobbet i Firebase Realtime Database
+                firebase.database().ref('jobs').push(job).then(() => {
+                    alert('Jobbet har lagts till!');
+                    jobForm.reset();
+                }).catch((error) => {
+                    console.error('Error:', error);
+                    alert('Något gick fel, försök igen senare.');
+                });
+            });
+        </script>
     </div>
-
-    <script>
-        const jobForm = document.getElementById('job-form');
-        jobForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const job = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value,
-                task: document.getElementById('task').value,
-                price: document.getElementById('price').value
-            };
-
-            let jobs = JSON.parse(localStorage.getItem('jobs')) || [];
-            jobs.push(job);
-            localStorage.setItem('jobs', JSON.stringify(jobs));
-
-            alert('Jobbet har lagts till!');
-            jobForm.reset(); // Töm formuläret
-        });
-    </script>
 </body>
 </html>
