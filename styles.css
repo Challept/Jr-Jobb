@@ -11,6 +11,7 @@ html, body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    user-select: none; /* Förhindra textkopiering */
 }
 
 body {
@@ -113,6 +114,7 @@ header p {
     font-style: italic;
     filter: blur(6px); /* Öka blur-effekten */
     transition: filter 0.3s ease;
+    user-select: none; /* Förhindra kopiering */
 }
 
 .job-card:hover .blur-text {
