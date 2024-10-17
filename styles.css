@@ -1,4 +1,4 @@
-* {  
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -74,12 +74,21 @@ button:hover, .delete-button:hover, form button:hover {
     min-height: 150px; /* Lägsta höjd */
 }
 
-/* Första jobbkortet (annons) utan fast höjd, men med fast bredd */
+/* Första jobbkortet (annons) utan fast höjd eller bredd */
 .job-grid .job-card:first-child {
     min-height: unset;
-    width: 310px;
+    width: auto; /* Anpassa bredden efter innehållet */
 }
 
+/* Anpassa annonsens bredd för att undvika fel */
+.ad-container {
+    min-width: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Animeringar och hover-effekter */
 .job-card:hover {
     transform: scale(1.02);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
