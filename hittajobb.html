@@ -40,6 +40,18 @@
             return address.replace(/\d+/g, '<span class="blur-text">$&</span>');
         }
 
+        function deleteJob(jobId) {
+            // Ta bort jobbet från Firebase
+            database.ref('jobs/' + jobId).remove()
+                .then(() => {
+                    alert("Jobbet har tagits bort!");
+                    loadJobs(); // Ladda om jobben efter borttagning
+                })
+                .catch((error) => {
+                    console.error("Kunde inte ta bort jobbet:", error);
+                });
+        }
+
         function loadJobs() {
             const jobList = document.getElementById('job-list');
 
@@ -54,6 +66,7 @@
 
                 snapshot.forEach((childSnapshot) => {
                     const job = childSnapshot.val();
+                    const jobId = childSnapshot.key;
                     const blurredAddress = blurAddressNumber(job.address);
                     const jobElement = document.createElement('div');
                     jobElement.className = 'job-card';
@@ -62,6 +75,7 @@
                         <p><strong>Telefon:</strong> <span class="phone-number">${job.phone}</span></p>
                         <p><strong>Adress:</strong> ${blurredAddress}</p>
                         <p><strong>Pris:</strong> ${job.price} kr</p>
+                        <button class="delete-button" onclick="deleteJob('${jobId}')">Ta bort</button>
                     `;
                     jobList.appendChild(jobElement);
                 });
