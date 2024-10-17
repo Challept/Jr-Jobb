@@ -5,11 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lägg till jobb - JrJobb</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Lägg till Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
+    <!-- Lägg till Firebase via CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lägg till ett nytt jobb</h1>
+        </header>
+        <form id="job-form">
+            <label for="name">Namn:</label>
+            <input type="text" id="name" required>
+
+            <label for="phone">Telefonnummer:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="address">Adress:</label>
+            <input type="text" id="address" required>
+
+            <label for="task">Uppgift:</label>
+            <input type="text" id="task" required>
+
+            <label for="price">Pris (kr):</label>
+            <input type="number" id="price" required>
+
+            <button type="submit">Lägg till jobb</button>
+        </form>
+
     <script>
-        // Din Firebase-konfiguration
+        // Firebase-konfiguration
         const firebaseConfig = {
             apiKey: "AIzaSyBuc6rlm9n68VOonCyxMD2RiCUL4ye6T9w",
             authDomain: "jrjobbeu.firebaseapp.com",
@@ -21,59 +46,33 @@
             measurementId: "G-4FWXYTXFGF"
         };
 
-        // Initiera Firebase
+        // Initialisera Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
-    </script>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Lägg till ett nytt jobb</h1>
-        </header>
-        <form id="job-form">
-            <label for="task">Uppgift:</label>
-            <input type="text" id="task" required>
 
-            <label for="phone">Telefonnummer:</label>
-            <input type="tel" id="phone" required>
+        const jobForm = document.getElementById('job-form');
+        jobForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-            <label for="address">Adress:</label>
-            <input type="text" id="address" required>
+            const job = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                task: document.getElementById('task').value,
+                price: document.getElementById('price').value
+            };
 
-            <label for="price">Pris (kr):</label>
-            <input type="number" id="price" required>
-
-            <button type="submit">Lägg till jobb</button>
-        </form>
-
-        <script>
-            // Vänta på att sidan ska laddas innan du tilldelar event-listeners
-            document.addEventListener('DOMContentLoaded', () => {
-                const jobForm = document.getElementById('job-form');
-
-                jobForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    const job = {
-                        task: document.getElementById('task').value,
-                        phone: document.getElementById('phone').value,
-                        address: document.getElementById('address').value,
-                        price: document.getElementById('price').value
-                    };
-
-                    // Spara jobbet i Firebase Realtime Database
-                    const dbRef = firebase.database().ref('jobs');
-                    dbRef.push(job).then(() => {
-                        alert('Jobbet har lagts till!');
-                        jobForm.reset();
-                    }).catch((error) => {
-                        console.error('Error:', error);
-                        alert('Något gick fel, försök igen senare.');
-                    });
+            // Spara till Firebase Realtime Database
+            database.ref('jobs').push(job)
+                .then(() => {
+                    alert('Jobbet har lagts till!');
+                    jobForm.reset();
+                })
+                .catch(error => {
+                    console.error('Fel vid tillägg av jobb:', error);
+                    alert('Ett fel inträffade. Försök igen.');
                 });
-            });
-        </script>
-    </div>
+        });
+    </script>
 </body>
 </html>
