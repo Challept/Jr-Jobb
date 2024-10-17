@@ -6,9 +6,11 @@
 }
 
 html, body {
-    height: 100%; /* För att säkerställa att body fyller hela fönstret */
+    height: 100%; /* Se till att body och html tar upp hela höjden */
+    width: 100%; /* Använd hela bredden */
     display: flex;
     flex-direction: column;
+    overflow-x: hidden; /* Förhindra horisontell skrollning */
 }
 
 body {
@@ -16,8 +18,8 @@ body {
     color: #333;
     justify-content: flex-start;
     align-items: center;
-    padding: 20px;
-    overflow-x: hidden; /* Förhindrar horisontell skrollning */
+    padding: 20px 0; /* Lägg till lite padding uppåt och nedåt */
+    flex: 1; /* För att se till att body fyller ut hela sidan */
 }
 
 /* Container för huvudinnehåll */
@@ -134,10 +136,10 @@ footer {
     padding: 20px 0;
     font-size: 1em;
     text-align: center;
-    width: 100vw; /* Använd hela bredden av viewporten */
-    position: relative;
+    width: 100%; /* Gör footern lika bred som hela sidan */
+    position: absolute; /* Förhindra att footern rör sig */
     bottom: 0;
-    left: 0; /* Se till att den börjar längst till vänster */
+    left: 0; /* Starta från vänster sida */
     animation: slideUp 1s ease;
 }
 
