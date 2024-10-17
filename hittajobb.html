@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
@@ -72,7 +72,7 @@
                     jobElement.className = 'job-card';
                     jobElement.innerHTML = `
                         <h3>${job.task}</h3>
-                        <p><strong>Telefon:</strong> <span class="phone-number">${job.phone}</span></p>
+                        <p><strong>Telefon:</strong> <span class="phone-number" style="user-select: text;">${job.phone}</span></p>
                         <p><strong>Adress:</strong> ${blurredAddress}</p>
                         <p><strong>Pris:</strong> ${job.price} kr</p>
                         <button class="delete-button" onclick="deleteJob('${jobId}')">Ta bort</button>
