@@ -6,7 +6,7 @@
 }
 
 html, body {
-    height: 100%; /* Se till att body och html tar upp hela höjden */
+    height: 100%; /* Se till att html och body tar upp hela höjden */
     width: 100%; /* Använd hela bredden */
     display: flex;
     flex-direction: column;
@@ -137,10 +137,10 @@ footer {
     font-size: 1em;
     text-align: center;
     width: 100%; /* Gör footern lika bred som hela sidan */
-    position: absolute; /* Förhindra att footern rör sig */
+    position: relative; /* Gör att footern placerar sig längst ned när sidan är längre */
     bottom: 0;
-    left: 0; /* Starta från vänster sida */
     animation: slideUp 1s ease;
+    clear: both; /* För att säkerställa att den inte placeras över något annat innehåll */
 }
 
 /* Responsiva inställningar */
