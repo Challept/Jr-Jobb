@@ -9,18 +9,13 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
     <style>
-        /* Förhindra textkopiering på alla element utom telefonnummer */
+        /* Förhindra textkopiering på alla element */
         body, h1, h3, p, div, span {
             user-select: none; /* Förhindra markering/kopiering */
         }
-
-        /* Tillåt endast telefonnummer att kopieras */
-        .phone-number {
-            user-select: text; /* Tillåter markering/kopiering av text */
-        }
     </style>
 </head>
-<body oncontextmenu="return false;">
+<body oncontextmenu="return false;" style="user-select: none;">
     <div class="container">
         <header>
             <h1>Tillgängliga jobb</h1>
@@ -31,16 +26,15 @@
     </div>
 
     <script>
-        // Förhindra kopiering även på mobiler
+        // Förhindra kopiering även på mobiler och andra enheter
         document.addEventListener('copy', (e) => {
-            const selection = window.getSelection();
-            const selectedText = selection.toString();
-            
-            // Om det som kopieras inte är från ett telefonnummer-element, blockera kopieringen
-            if (selection.anchorNode && !selection.anchorNode.parentElement.classList.contains('phone-number')) {
-                e.preventDefault();
-                alert("Textkopiering är inte tillåten.");
-            }
+            e.preventDefault();
+            alert("Textkopiering är inte tillåten.");
+        });
+
+        // Förhindra textmarkering på alla enheter
+        document.addEventListener('selectstart', (e) => {
+            e.preventDefault();
         });
 
         // Firebase-konfiguration
@@ -95,7 +89,7 @@
                     jobElement.className = 'job-card';
                     jobElement.innerHTML = `
                         <h3>${job.task}</h3>
-                        <p><strong>Telefon:</strong> <span class="phone-number" style="user-select: text;">${job.phone}</span></p>
+                        <p><strong>Telefon:</strong> <span class="phone-number">${job.phone}</span></p>
                         <p><strong>Adress:</strong> ${blurredAddress}</p>
                         <p><strong>Pris:</strong> ${job.price} kr</p>
                         <button class="delete-button" onclick="deleteJob('${jobId}')">Ta bort</button>
