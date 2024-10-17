@@ -134,11 +134,11 @@ footer {
     padding: 20px 0;
     font-size: 1em;
     text-align: center;
-    width: 100%;
-    margin-top: auto; /* Håller footern längst ned på sidan */
-    animation: slideUp 1s ease;
+    width: 100vw; /* Använd hela bredden av viewporten */
     position: relative;
     bottom: 0;
+    left: 0; /* Se till att den börjar längst till vänster */
+    animation: slideUp 1s ease;
 }
 
 /* Responsiva inställningar */
