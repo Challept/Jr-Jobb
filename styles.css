@@ -1,24 +1,8 @@
-* {
+* { 
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Förhindra markering av text */
-body, h1, h2, h3, p, button, form, .job-card, .about-section, .how-it-works {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-/* Tillåt markering av telefonnummer */
-.phone-number {
-    user-select: text;
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
 }
 
 body {
@@ -27,10 +11,10 @@ body {
     min-height: 100vh;
     background: linear-gradient(to bottom, #007bff, #28a745, #6c757d);
     color: #333;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Förhindrar horisontell skrollning */
 }
 
 /* Container för huvudinnehåll */
@@ -59,8 +43,8 @@ header p {
     animation: fadeIn 1.5s ease;
 }
 
-/* Knappar på indexsidan och dashboard */
-.button-section, .dashboard-buttons {
+/* Knappar på indexsidan */
+.button-section {
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -68,7 +52,7 @@ header p {
     flex-wrap: wrap;
 }
 
-.button-section button, .dashboard-buttons button {
+.button-section button {
     padding: 15px 30px;
     background-color: #28a745;
     color: white;
@@ -81,94 +65,63 @@ header p {
     animation: bounceIn 1s ease;
 }
 
-.button-section button:hover, .dashboard-buttons button:hover {
+.button-section button:hover {
     background-color: #218838;
     transform: scale(1.08);
 }
 
-/* Formulär i Lägg till jobb */
-form {
-    background-color: #ffffff;
+/* Hur fungerar det -sektionen */
+.how-it-works {
+    background-color: #f0f8ff; /* Ljus bakgrundsfärg */
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    animation: fadeIn 1.2s ease;
-}
-
-form label {
-    font-weight: bold;
+    margin: 30px auto;
+    max-width: 800px;
+    text-align: left;
     color: #333;
+    line-height: 1.8;
 }
 
-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: border 0.3s ease;
-}
-
-form input:focus {
-    border-color: #007bff;
-}
-
-form button {
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-form button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Jobbkort */
-.job-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeIn 1s ease;
-}
-
-.job-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.job-card h3 {
+.how-it-works h2 {
+    font-size: 2.5em;
     color: #007bff;
-    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-.job-card p {
-    margin: 5px 0;
+.step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-/* Blur-effekt för adressnummer */
-.blur-text {
-    color: #555;
-    font-style: italic;
-    filter: blur(4px);
-    transition: filter 0.3s ease;
+.step-number {
+    font-size: 2em;
+    color: #007bff;
+    font-weight: bold;
+    background-color: #e0f0ff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
 }
 
-.job-card:hover .blur-text {
-    filter: blur(2px);
+/* Om oss -sektionen */
+.about-section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    text-align: center;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px; /* Lite extra utrymme innan footern */
 }
 
 /* Footer */
@@ -186,12 +139,12 @@ footer {
 
 /* Responsiva inställningar */
 @media (max-width: 768px) {
-    .button-section, .dashboard-buttons {
+    .button-section {
         flex-direction: column;
         gap: 20px;
     }
 
-    .button-section button, .dashboard-buttons button {
+    .button-section button {
         width: 80%;
         font-size: 1.2em;
     }
@@ -204,16 +157,14 @@ footer {
         font-size: 1.1em;
     }
 
-    form button {
-        width: 100%;
+    .how-it-works h2 {
+        font-size: 2em;
     }
 
-    .job-card {
-        padding: 20px;
-    }
-
-    .job-card h3 {
-        font-size: 1.4em;
+    .step-number {
+        font-size: 1.8em;
+        width: 35px;
+        height: 35px;
     }
 }
 
