@@ -13,6 +13,11 @@
         body, h1, h3, p, div, span {
             user-select: none; /* Förhindra markering/kopiering */
         }
+
+        /* Tillåt telefonnummer att kopieras */
+        .phone-number {
+            user-select: text;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;" style="user-select: none;">
@@ -21,20 +26,21 @@
             <h1>Tillgängliga jobb</h1>
         </header>
         <div id="job-list">
-            <!-- Jobben kommer att visas här -->
+            <!-- Jobben och annonserna kommer att visas här -->
         </div>
     </div>
 
     <script>
         // Förhindra kopiering även på mobiler och andra enheter
         document.addEventListener('copy', (e) => {
-            e.preventDefault();
-            alert("Textkopiering är inte tillåten.");
-        });
-
-        // Förhindra textmarkering på alla enheter
-        document.addEventListener('selectstart', (e) => {
-            e.preventDefault();
+            const selection = window.getSelection();
+            const selectedText = selection.toString();
+            
+            // Om det som kopieras inte är från ett telefonnummer-element, blockera kopieringen
+            if (selection.anchorNode && !selection.anchorNode.parentElement.classList.contains('phone-number')) {
+                e.preventDefault();
+                alert("Textkopiering är inte tillåten.");
+            }
         });
 
         // Firebase-konfiguration
@@ -81,7 +87,7 @@
                     return;
                 }
 
-                snapshot.forEach((childSnapshot) => {
+                snapshot.forEach((childSnapshot, index) => {
                     const job = childSnapshot.val();
                     const jobId = childSnapshot.key;
                     const blurredAddress = blurAddressNumber(job.address);
@@ -95,6 +101,26 @@
                         <button class="delete-button" onclick="deleteJob('${jobId}')">Ta bort</button>
                     `;
                     jobList.appendChild(jobElement);
+
+                    // Lägg till en Google AdSense-annons efter varje jobbkort
+                    if ((index + 1) % 1 === 0) { // Efter varje rad
+                        const adContainer = document.createElement('div');
+                        adContainer.style.textAlign = 'center';
+                        adContainer.style.margin = '20px 0';
+                        adContainer.innerHTML = `
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5038872711071283" crossorigin="anonymous"></script>
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-5038872711071283"
+                                 data-ad-slot="1234567890" <!-- Byt till ditt annons-slot-ID -->
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        `;
+                        jobList.appendChild(adContainer);
+                    }
                 });
             });
         }
