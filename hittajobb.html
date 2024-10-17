@@ -19,6 +19,22 @@
             user-select: text;
         }
     </style>
+
+    <style>
+        /* Knapp placerad i övre vänstra hörnet */
+        .top-left-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5038872711071283"
      crossorigin="anonymous"></script>
@@ -26,6 +42,8 @@
 </head>
 <body oncontextmenu="return false;" style="user-select: none;">
     <div class="container">
+    <!-- Knapp till Dashboard -->
+    <button class="top-left-button" onclick="window.location.href='Dashboard.html';">Gå till Dashboard</button>
         <header>
             <h1>Tillgängliga jobb</h1>
         </header>
