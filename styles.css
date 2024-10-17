@@ -24,23 +24,22 @@ body {
     flex: 1;
 }
 
-/* Knapp med ljusblå till mörkblå gradient i övre vänstra hörnet */
-.top-left-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 10px 20px;
+/* Centrera alla knappar och gör dem större med gradient */
+button, .delete-button, form button {
+    padding: 20px 40px;
     background: linear-gradient(to right, #00aaff, #0044cc); /* Ljusblå till mörkblå gradient */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.5em; /* Större textstorlek */
     transition: background 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 20px auto; /* Centrera knappar */
 }
 
-.top-left-button:hover {
+button:hover, .delete-button:hover, form button:hover {
     transform: scale(1.05);
 }
 
@@ -90,26 +89,6 @@ body {
     font-size: 0.95em;
 }
 
-/* Stilar för "Ta bort"-knappen i jobbkort */
-.delete-button {
-    padding: 10px 20px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-    align-self: flex-start;
-}
-
-.delete-button:hover {
-    background-color: #e60000;
-    transform: scale(1.05);
-}
-
 /* Blur-effekt för adressnummer */
 .blur-text {
     color: #555;
@@ -154,23 +133,6 @@ form input {
 form input:focus {
     border-color: #007bff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-form button {
-    padding: 14px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-}
-
-form button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
 }
 
 /* Hur fungerar det -sektionen */
