@@ -55,7 +55,7 @@ button:hover, .delete-button:hover, form button:hover {
 /* Grid layout för jobbkorten */
 .job-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 kolumner */
+    grid-template-columns: repeat(2, 1fr); /* 2 kolumner */
     gap: 20px;
     width: 100%;
 }
@@ -71,6 +71,14 @@ button:hover, .delete-button:hover, form button:hover {
     display: flex;
     flex-direction: column;
     align-items: start;
+    min-height: 150px; /* Lägsta höjd */
+}
+
+/* Första jobbkortet (annons) utan fast höjd eller bredd */
+.job-grid .job-card:first-child {
+    min-height: unset;
+    height: auto;
+    width: auto;
 }
 
 .job-card:hover {
@@ -87,6 +95,26 @@ button:hover, .delete-button:hover, form button:hover {
 .job-card p {
     margin: 5px 0;
     font-size: 0.95em;
+}
+
+/* Stilar för "Ta bort"-knappen i jobbkort */
+.delete-button {
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+.delete-button:hover {
+    background-color: #e60000;
+    transform: scale(1.05);
 }
 
 /* Blur-effekt för adressnummer */
