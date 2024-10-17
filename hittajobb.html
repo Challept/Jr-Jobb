@@ -101,27 +101,6 @@
                         <button class="delete-button" onclick="deleteJob('${jobId}')">Ta bort</button>
                     `;
                     jobList.appendChild(jobElement);
-
-                    // Lägg till en Google AdSense-annons efter varje jobbkort
-                    if ((index + 1) % 1 === 0) { // Efter varje rad
-                        const adContainer = document.createElement('div');
-                        adContainer.style.textAlign = 'center';
-                        adContainer.style.margin = '20px 0';
-                        adContainer.innerHTML = `
-                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5038872711071283" crossorigin="anonymous"></script>
-                            <ins class="adsbygoogle"
-                                 style="display:block"
-                                 data-ad-client="ca-pub-5038872711071283"
-                                 data-ad-slot="1234567890" <!-- Byt till ditt annons-slot-ID -->
-                                 data-ad-format="auto"
-                                 data-full-width-responsive="true"></ins>
-                            <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                        `;
-                        jobList.appendChild(adContainer);
-                    }
-                });
             });
         }
 
