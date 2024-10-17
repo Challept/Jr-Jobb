@@ -5,10 +5,13 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
+html, body {
+    height: 100%; /* För att säkerställa att body fyller hela fönstret */
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+}
+
+body {
     background: linear-gradient(to bottom, #007bff, #28a745, #6c757d);
     color: #333;
     justify-content: flex-start;
@@ -23,7 +26,7 @@ body {
     max-width: 900px;
     padding: 20px;
     flex: 1;
-    animation: fadeIn 1s ease;
+    animation: fadeIn 1s ease; /* Lätt fade-in animation */
 }
 
 /* Header och huvudtext */
@@ -32,7 +35,7 @@ header h1 {
     margin-top: 20px;
     text-align: center;
     color: #ffffff;
-    animation: slideIn 1s ease;
+    animation: slideIn 1s ease; /* Header slides in från toppen */
 }
 
 header p {
@@ -62,7 +65,7 @@ header p {
     font-size: 1.3em;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    animation: bounceIn 1s ease;
+    animation: bounceIn 1s ease; /* Bouncy animation */
 }
 
 .button-section button:hover {
@@ -134,6 +137,8 @@ footer {
     width: 100%;
     margin-top: auto; /* Håller footern längst ned på sidan */
     animation: slideUp 1s ease;
+    position: relative;
+    bottom: 0;
 }
 
 /* Responsiva inställningar */
