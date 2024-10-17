@@ -74,11 +74,10 @@ button:hover, .delete-button:hover, form button:hover {
     min-height: 150px; /* Lägsta höjd */
 }
 
-/* Första jobbkortet (annons) utan fast höjd eller bredd */
+/* Första jobbkortet (annons) utan fast höjd, men med fast bredd */
 .job-grid .job-card:first-child {
     min-height: unset;
-    height: auto;
-    width: auto;
+    width: 310px;
 }
 
 .job-card:hover {
