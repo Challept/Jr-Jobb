@@ -23,7 +23,7 @@
 
         // Initiera Firebase
         const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        const database = firebase.getDatabase(app);
     </script>
 </head>
 <body>
@@ -63,7 +63,8 @@
                     };
 
                     // Spara jobbet i Firebase Realtime Database
-                    database.ref('jobs').push(job).then(() => {
+                    const dbRef = firebase.database().ref('jobs');
+                    dbRef.push(job).then(() => {
                         alert('Jobbet har lagts till!');
                         jobForm.reset();
                     }).catch((error) => {
