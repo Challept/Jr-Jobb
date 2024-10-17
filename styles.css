@@ -1,4 +1,4 @@
-* { 
+* {  
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -81,13 +81,14 @@ header p {
     background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 25px;
+    padding: 15px;
+    margin-bottom: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 1s ease;
     display: flex;
     flex-direction: column;
     align-items: start;
+    width: 300px; /* Minska bredden på korten */
 }
 
 .job-card:hover {
@@ -103,7 +104,19 @@ header p {
 
 .job-card p {
     margin: 5px 0;
-    font-size: 1em;
+    font-size: 0.95em;
+}
+
+/* Blur-effekt för adressnummer */
+.blur-text {
+    color: #555;
+    font-style: italic;
+    filter: blur(6px); /* Öka blur-effekten */
+    transition: filter 0.3s ease;
+}
+
+.job-card:hover .blur-text {
+    filter: blur(6px); /* Förhindra att blurrad text blir tydligare vid hover */
 }
 
 /* Formulär i Lägg till jobb */
@@ -208,7 +221,7 @@ form button:hover {
     color: #333;
     line-height: 1.6;
     margin-top: 40px;
-    margin-bottom: 60px; /* För att säkerställa utrymme ovanför footern */
+    margin-bottom: 60px;
 }
 
 /* Footer */
@@ -259,7 +272,8 @@ footer {
     }
 
     .job-card {
-        padding: 20px;
+        padding: 15px;
+        width: 90%; /* Anpassa bredden för mindre skärmar */
     }
 
     .job-card h3 {
